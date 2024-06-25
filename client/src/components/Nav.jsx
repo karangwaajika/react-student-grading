@@ -1,12 +1,22 @@
 import {Link, Outlet} from 'react-router-dom'
 export default function Nav(){
+    const date = new Date()
+    const hours = date.getHours()
+    let timeOfDay = ''
+    if(hours < 12){
+        timeOfDay = "Good morning"
+    }else if(hours >= 12 && hours < 18){
+        timeOfDay = "Good afternoon"
+    }else{
+        timeOfDay = "Good evening"
+    }
     return (
         <nav>
-            <p>Good morning! Mr ajika</p>
+            <p><b>{timeOfDay}</b>! Mr ajika</p>
             <ul className="links">
-                <li className="link"> <Link key="link1" to="/dashboard">Link2</Link></li>
-                <li className="link"><Link key="link1" to="/dashboard">Link2</Link></li>
-                <li className="link"><Link key="link1" to="/dashboard">Link2</Link></li>
+                <li className="link"> <Link key="link1" to="/dashboard">Dashboard</Link></li>
+                <li className="link"><Link key="link1" to="/dashboard">Students</Link></li>
+                <li className="link"><Link key="link1" to="/dashboard">Grades</Link></li>
             </ul>
             <div className="profile">
                 <div className="name">

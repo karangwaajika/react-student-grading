@@ -36,6 +36,16 @@ ul a {
     border-right: 1px solid white;
     width: 100px;
     padding: 10px;
+    color: #ebc888;
+}
+
+ul a:hover{
+    background-color: white;
+    color: black;
+}
+
+ul a:active, a:active{
+    color: rgb(235, 200, 136);
 }
 
 .profile{
