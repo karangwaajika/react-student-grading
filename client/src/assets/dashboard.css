@@ -1,60 +1,121 @@
 .dashboard-container{
     display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: minmax(50px, auto);
-    row-gap: 5px;
+    min-height: 100vh;
+    grid-template-columns:250px 1fr;
 }
 
-.dashboard-container nav{
+.right-side{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.right-side nav{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: rgb(18, 38, 46);
-    color: white;
-    
+    background-color: #ffff;
+    box-shadow: 1px 3px 3px rgb(104, 102, 102);
+    color: black;
+    min-height: 50px;
 }
-.dashboard-container nav img{
+.right-side nav img{
     width: 30px;
     display: block;
 }
 
-nav ul{
+.right-side nav ul{
     display: flex;
     list-style: none;
     gap: 15px;
 }
 
-ul a:first-child{
-    border-left: 1px solid white;
-}
-
-ul a, a{
-    color: white;
-}
-ul a {
+.right-side ul a {
     text-decoration: none;
     border-right: 1px solid white;
     width: 100px;
-    padding: 10px;
-    color: #ebc888;
+    padding: 13px;
+    color: black;
 }
 
-ul a:hover{
+.right-side ul a:hover{
     background-color: white;
     color: black;
 }
 
-ul a:active, a:active{
+.right-side ul a:active, a:active{
     color: rgb(235, 200, 136);
 }
 
-.profile{
+.right-side .profile{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 5px;
 }
 
-.profile button{
+.right-side .profile button{
     height: 30px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(18, 38, 46);
+    color: white;
+}
+.left-side ul a{
+    color: white;
+}
+article, figure{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+figure{
+    gap: 15px;
+}
+figure img{
+    display: block;
+    width: 200px;
+    height: auto;
+    border: 1px solid #092342;
+    box-shadow: 1px 3px 1px 2px #3a4757;
+    border-radius: 50%;
+    padding: 20px;
+}
+figcaption{
+    font-weight: bold;
+    font-size: 23px;
+    text-align: center;
+}
+article p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.left-side nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+.left-side nav ul li{
+    
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.left-side nav li a{
+    text-decoration: none;
+}
+
+.left-side nav ul li:hover, .left-side nav ul li a:hover {
+    background-color: white;
+    color: black;
 }
