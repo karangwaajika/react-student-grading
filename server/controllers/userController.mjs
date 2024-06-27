@@ -15,10 +15,10 @@ export const addUser = async (request, response) => {
 
   try {
     await User.create(user);
-    await response.flash("success", "Successfuly added");
+    await response.send({"success":"Successfuly added"});
     
   } catch (e) {
-    await response.flash('error', e)
+    await response.send({'error':"user exist"})
     console.log(e)
   }
 };

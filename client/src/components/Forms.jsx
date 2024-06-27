@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import FlashMessage from "./FlashMessage";
 
 export default function Forms() {
   const [form, setForm] = useState({
@@ -20,6 +21,18 @@ export default function Forms() {
     });
 
   };
+
+  const [msg, setMsg] = useState({
+    error: "",
+    success: ""
+  });
+
+  const removeMessage = (msg) => {
+    setMsg((prevMsg) => {
+      return { ...prevMsg, [msg]: "" };
+    });
+  };
+  
   const submitForm = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
@@ -37,15 +50,44 @@ export default function Forms() {
         body: formdata,
       });
       const result = await resp.json();
-      console.log(result);
+      setMsg((prevMsg) => {
+        if (result.success) {
+          return { ...prevMsg, success: result.success };
+        }
+        return { ...prevMsg, error: result.error };
+      });
     } catch (err) {
       console.log(err);
     }
   };
+
+  let displayMessage;
+
+  if (msg.success) {
+    console.log("ye");
+    console.log(msg.success);
+    displayMessage = (
+      <FlashMessage
+        message={msg.success}
+        messageName="success"
+        removeMessage={() => removeMessage("success")}
+      />
+    );
+  } else if (msg.error) {
+    displayMessage = (
+      <FlashMessage
+        message={msg.error}
+        messageName="error"
+        removeMessage={() => removeMessage("error")}
+      />
+    );
+  }
+
   return (
     <main className="forms-container">
       <div className="singup">
         <h3>Sign-up </h3>
+        {displayMessage}
         <form onSubmit={submitForm}>
           <div className="form-control">
             <label htmlFor="name">Full Name</label>
