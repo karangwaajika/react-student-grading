@@ -6,6 +6,7 @@ import flash from 'express-flash-message'
 import MongoStore from 'connect-mongo'
 import cors from 'cors'
 import route from "./route/userRoute.mjs";
+import passport from 'passport'
 
 const app = express();
 dotenv.config();
@@ -35,6 +36,9 @@ app.use(session({ // add assession ID in database
 }))
 
 app.use(flash({sessionKeyName: 'express-flash-message'})) // session message
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(route) // all routes
 

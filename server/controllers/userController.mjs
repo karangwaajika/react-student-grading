@@ -22,3 +22,7 @@ export const addUser = async (request, response) => {
     console.log(e)
   }
 };
+
+export const loginUser = (request, response)=>{
+  response.send({'data':"success"})
+}

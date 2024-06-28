@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FlashMessage from "./FlashMessage";
+import Login from "./Login";
 
 export default function Forms() {
   const [form, setForm] = useState({
@@ -190,28 +191,7 @@ export default function Forms() {
         </form>
       </div>
       <div className="signin">
-        <h3>Sign-in</h3>
-        <form action="">
-          <div className="form-control">
-            <label htmlFor="email">Email</label>
-            <input type="text" name="email" id="email" placeholder="Email" />
-          </div>
-          <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input
-              type="text"
-              name="password"
-              id="password"
-              placeholder="password"
-            />
-          </div>
-          <div className="form-control">
-            <button>Signin</button>
-          </div>
-          <i style={{ fontWeight: "bold", fontSize: "12px" }}>
-            If you have trouble signing in, please sign-up first!
-          </i>
-        </form>
+        <Login />
       </div>
     </main>
   );
