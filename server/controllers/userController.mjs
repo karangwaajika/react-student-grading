@@ -33,7 +33,7 @@ export const addUser = async (request, response) => {
       message: "Something went wrong",
       error: error,
     });
-    console.log(e);
+  
   }
 };
 

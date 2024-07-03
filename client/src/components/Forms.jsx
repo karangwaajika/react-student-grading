@@ -22,18 +22,13 @@ export default function Forms() {
     });
   };
 
-  const [msg, setMsg] = useState({
-    error: "",
-    success: ""
-  });
+  const [responseMessage, setResponseMessage] = useState();
 
-  const removeMessage = (msg) => {
-    setMsg((prevMsg) => {
-      return { ...prevMsg, [msg]: "" };
-    });
+  const removeMessage = () => {
+    setResponseMessage();
   };
 
-  const [fieldError, setFieldError] = useState('');
+  const [fieldError, setFieldError] = useState("");
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -42,32 +37,32 @@ export default function Forms() {
       errorsValidation["name"] = "Name is required";
     } else if (form.name.length < 3) {
       errorsValidation["name"] = "Characters should be greater than 3";
-    }else if(!/^[a-zA-Z]+$/.test(form.name)){
+    } else if (!/^[a-zA-Z]+$/.test(form.name)) {
       errorsValidation["name"] = "Use letters only";
     }
 
-    if(!form.email.trim()){
-      errorsValidation['email'] = "Email is required"
-    }else if(!/\S+@\S+.\S+/.test(form.email)){
-      errorsValidation['email'] = 'Email is invalid'
+    if (!form.email.trim()) {
+      errorsValidation["email"] = "Email is required";
+    } else if (!/\S+@\S+.\S+/.test(form.email)) {
+      errorsValidation["email"] = "Email is invalid";
     }
 
-    if(!form.image){
-      errorsValidation['image'] = "Profile picture is required"
+    if (!form.image) {
+      errorsValidation["image"] = "Profile picture is required";
     }
 
-    if(!form.password.trim()){
-      errorsValidation['password'] = "Password required"
+    if (!form.password.trim()) {
+      errorsValidation["password"] = "Password required";
     }
 
-    if(form.password != form.confirmPassword){
-      errorsValidation['confirmPassword'] = "Password didn't match !"
+    if (form.password != form.confirmPassword) {
+      errorsValidation["confirmPassword"] = "Password didn't match !";
     }
 
-    setFieldError(errorsValidation)
+    setFieldError(errorsValidation);
 
-    if(Object.keys(errorsValidation).length == 0){
-      submitForm()
+    if (Object.keys(errorsValidation).length == 0) {
+      submitForm();
     }
   };
 
@@ -78,54 +73,33 @@ export default function Forms() {
     formdata.append("password", form.password);
     formdata.append("email", form.email);
 
-    // axios.post('http://localhost:3001/add_user', formdata)
-    // .then(res=>console.log(res))
-    // .catch(e=>console.log(e))
-    try {
-      const resp = await fetch("http://localhost:3001/add_user", {
-        method: "post",
-        body: formdata,
+    axios.post("http://localhost:3001/add_user", formdata)
+      .then((res) => {
+        setResponseMessage({
+          success: res.data.success,
+          message: res.data.message,
+        });
+      })
+      .catch((e) => {
+        setResponseMessage({
+          success: false,
+          message: e,
+        });
       });
-      const result = await resp.json();
-      console.log(result)
-      // setMsg((prevMsg) => {
-      //   if (result.success) {
-      //     return { ...prevMsg, success: result.success };
-      //   }
-      //   return { ...prevMsg, error: result.error };
-      // });
-    } catch (err) {
-      console.log(err);
-    }
   };
 
-  let displayMessage;
-
-  if (msg.success) {
-    console.log("ye");
-    console.log(msg.success);
-    displayMessage = (
-      <FlashMessage
-        message={msg.success}
-        messageName="success"
-        removeMessage={() => removeMessage("success")}
-      />
-    );
-  } else if (msg.error) {
-    displayMessage = (
-      <FlashMessage
-        message={msg.error}
-        messageName="error"
-        removeMessage={() => removeMessage("error")}
-      />
-    );
-  }
 
   return (
     <main className="forms-container">
       <div className="singup">
         <h3>Sign-up </h3>
-        {displayMessage}
+        {responseMessage && (
+          <FlashMessage
+            message={responseMessage.message}
+            success={responseMessage.success}
+            removeMessage={removeMessage}
+          />
+        )}
         <form onSubmit={handleSubmitForm}>
           <div className="form-control">
             <label htmlFor="name">Full Name</label>
@@ -136,7 +110,9 @@ export default function Forms() {
               onChange={handleChange}
               placeholder="Full name"
             />
-            {fieldError.name && <i className="error-field">{fieldError.name}</i>}
+            {fieldError.name && (
+              <i className="error-field">{fieldError.name}</i>
+            )}
           </div>
           <div className="form-row">
             <div className="form-control">
@@ -148,7 +124,9 @@ export default function Forms() {
                 onChange={handleChange}
                 placeholder="Email"
               />
-              {fieldError.email && <i className="error-field">{fieldError.email}</i>}
+              {fieldError.email && (
+                <i className="error-field">{fieldError.email}</i>
+              )}
             </div>
             <div className="">
               <label htmlFor="image">Profile</label>
@@ -159,7 +137,9 @@ export default function Forms() {
                 onChange={handleChange}
                 id="image"
               />
-              {fieldError.image && <i className="error-field">{fieldError.image}</i>}
+              {fieldError.image && (
+                <i className="error-field">{fieldError.image}</i>
+              )}
             </div>
           </div>
           <div className="form-row">
@@ -172,7 +152,9 @@ export default function Forms() {
                 placeholder="***********"
                 onChange={handleChange}
               />
-              {fieldError.password && <i className="error-field">{fieldError.password}</i>}
+              {fieldError.password && (
+                <i className="error-field">{fieldError.password}</i>
+              )}
             </div>
             <div className="form-control">
               <label htmlFor="confirm-password">Confirm-password</label>
@@ -183,7 +165,9 @@ export default function Forms() {
                 placeholder="***********"
                 onChange={handleChange}
               />
-              {fieldError.confirmPassword && <i className="error-field">{fieldError.confirmPassword}</i>}
+              {fieldError.confirmPassword && (
+                <i className="error-field">{fieldError.confirmPassword}</i>
+              )}
             </div>
           </div>
           <div className="form-control">
