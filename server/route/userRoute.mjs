@@ -3,6 +3,7 @@ import * as controller from "../controllers/userController.mjs";
 import multer from "multer";
 import passport from "passport";
 import "../login-strategy/local-strategy.mjs";
+import "../login-strategy/token-strategy.mjs";
 
 const route = express();
 
@@ -17,13 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 route.post("/add_user", upload.single("file"), controller.addUser);
-route.post(
-  "/login_user",
-  passport.authenticate("local", {
-    failureRedirect: "/",
-    failureMessage: true,
-  }),
-  controller.loginUser
-);
+route.post("/login_user", controller.loginUser);
+route.get('/protected', passport.authenticate('jwt', {session:false}), controller.protectedUser)
 
 export default route;

@@ -35,7 +35,7 @@ export default function Login() {
     console.log(data)
   }catch(err){
     console.log("failed")
-    console.log(err.message)
+    console.log(err)
   }
   
   

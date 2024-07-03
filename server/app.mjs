@@ -37,7 +37,7 @@ app.use(session({ // add assession ID in database
 
 app.use(flash({sessionKeyName: 'express-flash-message'})) // session message
 
-app.use(passport.initialize())
+app.use(passport.initialize()) //only this is needed with jwt no session needed
 app.use(passport.session())
 
 app.use(route) // all routes

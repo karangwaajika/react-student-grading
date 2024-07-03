@@ -87,12 +87,13 @@ export default function Forms() {
         body: formdata,
       });
       const result = await resp.json();
-      setMsg((prevMsg) => {
-        if (result.success) {
-          return { ...prevMsg, success: result.success };
-        }
-        return { ...prevMsg, error: result.error };
-      });
+      console.log(result)
+      // setMsg((prevMsg) => {
+      //   if (result.success) {
+      //     return { ...prevMsg, success: result.success };
+      //   }
+      //   return { ...prevMsg, error: result.error };
+      // });
     } catch (err) {
       console.log(err);
     }
