@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import FlashMessage from "./FlashMessage";
 import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 
 export default function Forms() {
   const [form, setForm] = useState({
@@ -73,7 +74,8 @@ export default function Forms() {
     formdata.append("password", form.password);
     formdata.append("email", form.email);
 
-    axios.post("http://localhost:3001/add_user", formdata)
+    axios
+      .post("http://localhost:3001/add_user", formdata)
       .then((res) => {
         setResponseMessage({
           success: res.data.success,
@@ -87,7 +89,22 @@ export default function Forms() {
         });
       });
   };
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:3001/protected", {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        navigate("/");
+      });
+  }, []);
 
   return (
     <main className="forms-container">
