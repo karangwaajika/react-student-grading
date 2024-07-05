@@ -1,0 +1,51 @@
+input {
+  height: 25px;
+  padding: 14px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.form-file {
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 30px;
+}
+input::placeholder {
+  font-family: "Courier New", Courier, monospace;
+}
+
+button {
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.success-message{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(149, 233, 149);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .error-message{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(248, 136, 136);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .remove-message{
+    cursor: pointer;
+  }
+  .remove-message:active{
+    color: white;
+  }
+  
+  .error-field{
+    color: rgb(182, 7, 7);
+    font-size: 15px;
+  }

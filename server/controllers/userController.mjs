@@ -1,6 +1,6 @@
 import { User } from "../models/user.mjs";
 import { hashPassword, comparedPassword } from "../utils/hashpassword.mjs";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -30,59 +30,60 @@ export const addUser = async (request, response) => {
   } catch (error) {
     await response.send({
       success: false,
-      message: "Something went wrong",
+      message: "Email  exist already!",
       error: error,
     });
-  
   }
 };
 
 export const loginUser = (request, response) => {
-  const {email, password} = request.body
-  
-    User.findOne({email}).then(user => {
-      if(!user){
+  const { email, password } = request.body;
+
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) {
         return response.status(401).send({
           success: false,
-          message:"User doesn't exist",
-        })
+          message: "User doesn't exist",
+        });
       }
-      if(!comparedPassword(password, user.password)){
+      if (!comparedPassword(password, user.password)) {
         return response.status(401).send({
           success: false,
-          message:"Incorrect password",
-        })
+          message: "Incorrect password",
+        });
       }
       // create our token jwt.sign(payload, secretOrPrivateKey, [options, callback])
       // this payload info is the one found in passport token strategy and hold this info
       const payload = {
         email: user.email,
-        id : user._id,
-      }
-      const token = jwt.sign(payload, process.env.secretOrPrivateKey, {expiresIn:"1d"})
+        id: user._id,
+      };
+      const token = jwt.sign(payload, process.env.secretOrPrivateKey, {
+        expiresIn: "1d",
+      });
       return response.status(200).send({
         success: true,
-        message:"Logged in Successfuly",
-        token: "bearer "+token,
-      })
-    }).catch(error => {
+        message: "Logged in Successfuly",
+        token: "bearer " + token,
+      });
+    })
+    .catch((error) => {
       return response.status(401).send({
         success: false,
-        message:"something went wrong",
+        message: "something went wrong",
         error: error,
-      })
-    })
-    
-  
+      });
+    });
 };
 
-export const protectedUser = (request, response) =>{
+export const protectedUser = (request, response) => {
   return response.status(200).send({
     success: true,
-    message:"authenticated",
-    user:{
+    message: "authenticated",
+    user: {
       id: request.user._id,
-      email: request.user.email
+      email: request.user.email,
     },
-  })
-}
+  });
+};

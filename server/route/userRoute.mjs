@@ -19,6 +19,10 @@ const upload = multer({ storage: storage });
 
 route.post("/add_user", upload.single("file"), controller.addUser);
 route.post("/login_user", controller.loginUser);
-route.get('/protected', passport.authenticate('jwt', {session:false}), controller.protectedUser)
+route.get(
+  "/protected",
+  passport.authenticate("jwt", { session: false }),
+  controller.protectedUser
+);
 
 export default route;

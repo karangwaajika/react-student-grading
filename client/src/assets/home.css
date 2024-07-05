@@ -1,22 +1,22 @@
-.app {
+.home {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.app nav {
+.home nav {
   background-color: rgb(238, 235, 231);
   display: flex;
 }
 
-nav img {
+.home nav img {
   display: block;
   height: auto;
   width: 80px;
   border: 1px solid white;
   border-radius: 5px;
 }
-nav .title {
+.home nav .title {
   margin: auto;
 }
 .forms-container {
@@ -34,7 +34,7 @@ nav .title {
   flex-direction: column;
 }
 
-form {
+.home form {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -47,27 +47,13 @@ form {
   gap: 1px;
 }
 
-.form-control input {
-  height: 25px;
-  padding: 14px;
-  border: 1px solid black;
-  border-radius: 2px;
-}
-.form-file{
-  border: 1px solid black;
-  border-radius: 2px;
-  height: 30px;
-}
-.form-control input::placeholder {
-  font-family: "Courier New", Courier, monospace;
-}
-.form-row{
+.home .form-row{
     width: 70%;
     display: flex;
     gap: 5px;
 }
 
-button {
+.forms-container button {
     padding: 8px;
     background-color: rgb(64, 91, 126);
     color: white;
@@ -76,12 +62,12 @@ button {
     cursor: pointer;
 }
 
-button:hover{
+.forms-container button:hover{
     background-color: white;
     border: 1px solid rgb(64, 91, 126) ;
     color: black;
 }
-button:active{
+.forms-container button:active{
     background-color: rgb(64, 91, 126);
 }
 
@@ -100,33 +86,3 @@ footer div{
     text-align: center;
 }
 
-.success-message{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(149, 233, 149);
-  color: black;
-  border-radius: 5px;
-  padding: 10px;
-}
-.error-message{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(248, 136, 136);
-  color: black;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.remove-message{
-  cursor: pointer;
-}
-.remove-message:active{
-  color: white;
-}
-
-.error-field{
-  color: rgb(182, 7, 7);
-  font-size: 15px;
-}
