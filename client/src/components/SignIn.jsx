@@ -20,12 +20,13 @@ export default function SignIn() {
   };
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     axios
       .post(import.meta.env.VITE_REACT_APP_LOGIN_USER_API, {
         email: form.email,
@@ -43,6 +44,9 @@ export default function SignIn() {
           success: false,
           message: err.response.data.message,
         });
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -56,35 +60,42 @@ export default function SignIn() {
           removeMessage={removeMessage}
         />
       )}
-      <form onSubmit={handleSubmit}>
-        <div className="form-control">
-          <InputField
-            type="text"
-            name="email"
-            id="email-login"
-            handleChange={handleChange}
-            placeholder="Email"
-            label="Email"
-            value={form.email}
-          />
-        </div>
-        <div className="form-control">
-          <InputField
-            type="password"
-            name="password"
-            id="login-password"
-            placeholder="***********"
-            handleChange={handleChange}
-            value={form.password}
-          />
-        </div>
-        <div className="form-control">
-          <Button text="SignIn" />
-        </div>
-        <i style={{ fontWeight: "bold", fontSize: "12px" }}>
-          If you have trouble signing in, please sign-up first!
-        </i>
-      </form>
+      <div className="form-signin">
+        {isLoading && (
+          <div className="loader">
+            <img src="images/giphy-1.webp" width={100} height={100} />
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="form-control">
+            <InputField
+              type="text"
+              name="email"
+              id="email-login"
+              handleChange={handleChange}
+              placeholder="Email"
+              label="Email"
+              value={form.email}
+            />
+          </div>
+          <div className="form-control">
+            <InputField
+              type="password"
+              name="password"
+              id="login-password"
+              placeholder="***********"
+              handleChange={handleChange}
+              value={form.password}
+            />
+          </div>
+          <div className="form-control">
+            <Button text="SignIn" />
+          </div>
+          <i style={{ fontWeight: "bold", fontSize: "12px" }}>
+            If you have trouble signing in, please sign-up first!
+          </i>
+        </form>
+      </div>
     </div>
   );
 }

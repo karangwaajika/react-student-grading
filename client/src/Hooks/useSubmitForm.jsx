@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export default function useSubmitForm(url, form, setResponseMessage) {
+export default function useSubmitForm(
+  url,
+  form,
+  setResponseMessage,
+  setIsLoading
+) {
   axios
     .post(url, form)
     .then((res) => {
@@ -14,6 +19,9 @@ export default function useSubmitForm(url, form, setResponseMessage) {
         success: false,
         message: e.response.data.message,
       });
+    })
+    .finally(() => {
+      setIsLoading(false);
     });
 }
 

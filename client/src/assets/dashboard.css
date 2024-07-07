@@ -2,8 +2,23 @@
   display: grid;
   min-height: 100vh;
   grid-template-columns: 250px 1fr;
+  position: relative;
 }
 
+.dashboard-container .loader {
+  position: absolute;
+  top: 0px;
+  left: 300px;
+  width: 100vh;
+  height: 100vh;
+}
+.dashboard-container .loader img {
+  width: 100vh;
+  height: 100vh;
+  display: block;
+  opacity: 0.5;
+  border-radius: 80%;
+}
 .right-side {
   display: flex;
   flex-direction: column;
@@ -123,7 +138,7 @@ article p {
   color: black;
 }
 
-main.main-content  {
+main.main-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -157,11 +172,11 @@ main.main-content  {
   color: black;
 }
 
-.card:hover{
-    background-color: #a3d3a5;
+.card:hover {
+  background-color: #a3d3a5;
 }
-.card a:active{
-    color: #fff;
+.card a:active {
+  color: #fff;
 }
 
 .card:nth-child(7),

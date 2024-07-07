@@ -6,9 +6,15 @@ import SideBar from "../components/SideBar";
 import useProtectPage from "../Hooks/useProtectPage";
 
 export default function Dashboard() {
-  useProtectPage(import.meta.env.VITE_REACT_APP_PROTECT_PAGE);
+  const isLoading = useProtectPage(import.meta.env.VITE_REACT_APP_PROTECT_PAGE);
   return (
     <div className="dashboard-container">
+      {isLoading && (
+        <div className="loader">
+          <img src="images/giphy-1.webp" width={100} height={100} />
+        </div>
+      )}
+
       <aside className="left-side">
         <Profile />
         <SideBar />

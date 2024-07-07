@@ -48,8 +48,10 @@ export default function SignUp() {
 
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = async () => {
+    setIsLoading(true);
     const formdata = new FormData();
     formdata.append("file", form.image);
     formdata.append("name", form.name);
@@ -59,7 +61,8 @@ export default function SignUp() {
     useSubmitForm(
       import.meta.env.VITE_REACT_APP_ADD_USER_API,
       formdata,
-      setResponseMessage
+      setResponseMessage,
+      setIsLoading
     );
   };
 
@@ -73,80 +76,89 @@ export default function SignUp() {
           removeMessage={removeMessage}
         />
       )}
-      <form onSubmit={handleSubmitForm}>
-        <div className="form-control">
-          <InputField
-            type="text"
-            name="name"
-            id="name"
-            handleChange={handleChange}
-            placeholder="Full name"
-            label="Full name"
-            value={form.name}
-          />
-          {fieldError.name && <i className="error-field">{fieldError.name}</i>}
-        </div>
-        <div className="form-row">
+      <div className="form-signup">
+        {isLoading && (
+          <div className="loader">
+            <img src="images/giphy-1.webp" width={100} height={100} />
+          </div>
+        )}
+        <form onSubmit={handleSubmitForm}>
           <div className="form-control">
             <InputField
               type="text"
-              name="email"
-              id="email"
+              name="name"
+              id="name"
               handleChange={handleChange}
-              placeholder="Email"
-              label="Email"
-              value={form.email}
+              placeholder="Full name"
+              label="Full name"
+              value={form.name}
             />
-            {fieldError.email && (
-              <i className="error-field">{fieldError.email}</i>
+            {fieldError.name && (
+              <i className="error-field">{fieldError.name}</i>
             )}
           </div>
-          <div className="">
-            <FileField
-              type="file"
-              className=""
-              name="image"
-              handleChange={handleChange}
-              id="image"
-              label="Profile"
-            />
-            {fieldError.image && (
-              <i className="error-field">{fieldError.image}</i>
-            )}
+          <div className="form-row">
+            <div className="form-control">
+              <InputField
+                type="text"
+                name="email"
+                id="email"
+                handleChange={handleChange}
+                placeholder="Email"
+                label="Email"
+                value={form.email}
+              />
+              {fieldError.email && (
+                <i className="error-field">{fieldError.email}</i>
+              )}
+            </div>
+            <div className="">
+              <FileField
+                type="file"
+                className=""
+                name="image"
+                handleChange={handleChange}
+                id="image"
+                label="Profile"
+              />
+              {fieldError.image && (
+                <i className="error-field">{fieldError.image}</i>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="form-row">
+          <div className="form-row">
+            <div className="form-control">
+              <InputField
+                type="password"
+                name="password"
+                id="password"
+                placeholder="***********"
+                handleChange={handleChange}
+                value={form.password}
+              />
+              {fieldError.password && (
+                <i className="error-field">{fieldError.password}</i>
+              )}
+            </div>
+            <div className="form-control">
+              <InputField
+                type="password"
+                name="confirmPassword"
+                id="confirm-password"
+                placeholder="***********"
+                handleChange={handleChange}
+                value={form.confirmPassword}
+              />
+              {fieldError.confirmPassword && (
+                <i className="error-field">{fieldError.confirmPassword}</i>
+              )}
+            </div>
+          </div>
           <div className="form-control">
-            <InputField
-              type="password"
-              name="password"
-              id="password"
-              placeholder="***********"
-              handleChange={handleChange}
-              value={form.password}
-            />
-            {fieldError.password && (
-              <i className="error-field">{fieldError.password}</i>
-            )}
+            <Button text="Submit" />
           </div>
-          <div className="form-control">
-            <InputField
-              type="password"
-              name="confirmPassword"
-              id="confirm-password"
-              placeholder="***********"
-              handleChange={handleChange}
-              value={form.confirmPassword}
-            />
-            {fieldError.confirmPassword && (
-              <i className="error-field">{fieldError.confirmPassword}</i>
-            )}
-          </div>
-        </div>
-        <div className="form-control">
-          <Button text="Submit" />
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
