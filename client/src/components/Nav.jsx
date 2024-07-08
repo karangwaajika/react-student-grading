@@ -28,17 +28,17 @@ export default function Nav() {
       <ul className="links">
         <li className="link">
           {" "}
-          <Link key="link1" to="/dashboard">
+          <Link key="link1" to="/dashboard/home">
             Dashboard
           </Link>
         </li>
         <li className="link">
-          <Link key="link1" to="/dashboard">
+          <Link key="link1" to="/dashboard/view_student">
             Students
           </Link>
         </li>
         <li className="link">
-          <Link key="link1" to="/dashboard">
+          <Link key="link1" to="/dashboard/view_marks">
             Grades
           </Link>
         </li>

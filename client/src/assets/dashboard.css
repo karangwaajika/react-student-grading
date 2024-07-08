@@ -83,7 +83,7 @@ a:active {
   color: white;
 }
 .left-side ul a {
-  color: white;
+  color: rgba(255, 255, 255, 0.623);
 }
 article,
 figure {
@@ -137,7 +137,10 @@ article p {
   background-color: white;
   color: black;
 }
-
+.left-side nav li .active{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
 main.main-content {
   display: flex;
   flex-direction: column;
