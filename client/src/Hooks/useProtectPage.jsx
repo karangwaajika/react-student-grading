@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function useAutoSignIn(url) {
   const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({})
   const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
@@ -14,7 +15,9 @@ export default function useAutoSignIn(url) {
           Authorization: token,
         },
       })
-      .then()
+      .then((res)=>{
+        setUserInfo(res.data.user)
+      })
       .catch((err) => {
         navigate("/");
       })
@@ -22,5 +25,5 @@ export default function useAutoSignIn(url) {
         setIsLoading(false);
       });
   }, []);
-  return isLoading;
+  return {isLoading, userInfo};
 }

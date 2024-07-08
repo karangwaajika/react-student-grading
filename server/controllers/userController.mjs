@@ -84,6 +84,8 @@ export const protectedUser = (request, response) => {
     user: {
       id: request.user._id,
       email: request.user.email,
+      fullname: request.user.fullname,
+      image: request.user.image,
     },
   });
 };
