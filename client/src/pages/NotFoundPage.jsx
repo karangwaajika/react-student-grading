@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
-export default function ErrorPage() {
+export default function NotFoundPage() {
     const style = {
         margin:"auto",
         display: "flex",
