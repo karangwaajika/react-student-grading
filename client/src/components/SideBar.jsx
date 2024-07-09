@@ -7,7 +7,7 @@ export default function SideBar() {
           <div className="fontawesome">
             <i className="fa fa-home "></i>
           </div>
-          <NavLink to="/dashboard/home" className="link">
+          <NavLink to="/dashboard" className="link">
             Home
           </NavLink>
         </li>

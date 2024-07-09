@@ -28,7 +28,7 @@ export default function Nav() {
       <ul className="links">
         <li className="link">
           {" "}
-          <Link key="link1" to="/dashboard/home">
+          <Link key="link1" to="/dashboard">
             Dashboard
           </Link>
         </li>

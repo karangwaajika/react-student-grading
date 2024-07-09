@@ -10,8 +10,6 @@ import HomeDashboard from './HomeDashboard'
 
 export const UserContent = createContext();
 export default function Dashboard() {
-  const location = useLocation()
-  const[dashboard, setDasboard] = useState(location.pathname)
   const { isLoading, userInfo } = useProtectPage(
     import.meta.env.VITE_REACT_APP_PROTECT_PAGE
   );
@@ -30,7 +28,7 @@ export default function Dashboard() {
         <aside className="right-side">
           <Nav />
           <main className="main-content">
-            {dashboard == "/dashboard"? <HomeDashboard /> : <Outlet />}
+            <Outlet />
           </main>
         </aside>
       </UserContent.Provider>
