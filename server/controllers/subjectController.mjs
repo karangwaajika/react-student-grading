@@ -42,3 +42,21 @@ export const addSubject = (request, response) => {
       });
     });
 };
+
+export const viewSubjects = (request, response) => {
+  Subject.find()
+    .then((subjects) => {
+      return response.send({
+        success: true,
+        message: "Data retrieved Successfully",
+        subjects,
+      });
+    })
+    .catch((err) => {
+      return response.send({
+        success: false,
+        message: "Error encouted, try again.",
+        subjects: {},
+      });
+    });
+};
