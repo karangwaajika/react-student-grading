@@ -4,8 +4,8 @@ import InputField from "./ui/InputField";
 import FileField from "./ui/FileField";
 import Button from "./ui/Button";
 import fieldValidation from "../utils/fieldValidation.mjs";
-import useSubmitForm from "../Hooks/useSubmitForm";
 import useResponseMessage from "../Hooks/useResponseMessage";
+import signUp from '../utils/signUp.mjs'
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -27,8 +27,7 @@ export default function SignUp() {
   };
 
   const [fieldError, setFieldError] = useState("");
-
-  const handleSubmitForm = async (e) => {
+  const validateSubmitForm = async (e) => {
     e.preventDefault();
     const inputFields = {
       name: form.name,
@@ -58,7 +57,7 @@ export default function SignUp() {
     formdata.append("password", form.password);
     formdata.append("email", form.email);
 
-    useSubmitForm(
+    signUp(
       import.meta.env.VITE_REACT_APP_ADD_USER_API,
       formdata,
       setResponseMessage,
@@ -82,7 +81,7 @@ export default function SignUp() {
             <img src="images/giphy-1.webp" width={100} height={100} />
           </div>
         )}
-        <form onSubmit={handleSubmitForm}>
+        <form onSubmit={validateSubmitForm}>
           <div className="form-control">
             <InputField
               type="text"
