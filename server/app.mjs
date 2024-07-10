@@ -5,7 +5,7 @@ import session from 'express-session'
 import flash from 'express-flash-message'
 import MongoStore from 'connect-mongo'
 import cors from 'cors'
-import route from "./route/userRoute.mjs";
+import route from "./route/route.mjs";
 import passport from 'passport'
 
 const app = express();

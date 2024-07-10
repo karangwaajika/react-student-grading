@@ -21,7 +21,7 @@ export const addSubject = (request, response) => {
               subject: {
                 name: newSubj.name,
                 category: newSubj.category,
-                date: newSubj.createdAt,
+                date: newSubj.date,
               },
             });
           })

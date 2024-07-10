@@ -14,9 +14,9 @@ input::placeholder {
 }
 
 button {
-    padding: 8px;
-    border-radius: 3px;
-    cursor: pointer;
+  padding: 8px 36px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .success-message{
