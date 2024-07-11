@@ -190,3 +190,30 @@ main.main-content {
   grid-column: 3/4;
   grid-row: 3/5;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+button {
+  background: #7a8888ee;
+  border: 1px solid #7a8888ee;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: white;
+  border: 1px solid #7a8888ee;
+  color: #7a8888ee;
+}
+button:active {
+    background: #7a8888ee;
+    border: 1px solid #7a8888ee;
+    color: white;
+}
+form .form-control{
+  width: 100%;
+}

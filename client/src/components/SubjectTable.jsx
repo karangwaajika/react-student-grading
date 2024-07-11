@@ -1,4 +1,4 @@
-export default function SubjectTable({subjects}) {
+export default function SubjectTable({subjects,openModal}) {
   return (
     <>
       <table>
@@ -22,7 +22,7 @@ export default function SubjectTable({subjects}) {
                   <td data-cell="category">{subject.category}</td>
                   <td data-cell="date">{subject.date}</td>
                   <td data-cell="action">
-                    <i className="fa fa-pencil"></i>{" "}
+                    <i className="fa fa-pencil" onClick={openModal}></i>{" "}
                     <i className="fa fa-trash" style={{ color: "red" }}></i>
                   </td>
                 </tr>

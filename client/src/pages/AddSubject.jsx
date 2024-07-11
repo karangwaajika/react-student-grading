@@ -5,6 +5,7 @@ import FlashMessage from "../components/ui/FlashMessage";
 import useFetchSubject from "../Hooks/useFetchSubject";
 import SubjectForm from "../components/SubjectForm";
 import SubjectTable from "../components/SubjectTable";
+import EditSubjectModal from "../components/EditSubjectModal";
 
 export default function AddSubject() {
   const { responseMessage, setResponseMessage, removeMessage } =
@@ -19,6 +20,8 @@ export default function AddSubject() {
     setIsLoading,
     setSubjects
   );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -41,8 +44,14 @@ export default function AddSubject() {
           setSubjects={setSubjects}
           setIsLoading={setIsLoading}
         />
-        <SubjectTable subjects={subjects} />
+        <SubjectTable
+          subjects={subjects}
+          openModal={() => setIsModalOpen(true)}
+        />
       </div>
+      {isModalOpen && (
+        <EditSubjectModal closeModal={() => setIsModalOpen(false)} />
+      )}
     </>
   );
 }
