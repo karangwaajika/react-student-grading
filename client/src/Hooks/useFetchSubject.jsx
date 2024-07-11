@@ -8,7 +8,6 @@ export default function useFetchSubject(url, setResponseMessage ,setIsLoading, s
     axios
       .get(url, { cancelToken: cancelToken.token })
       .then((res) => {
-        console.log("from fetch")
         setData(res.data.subjects);
       })
       .catch((err) => {
