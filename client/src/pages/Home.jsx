@@ -1,7 +1,8 @@
 import "../assets/home.css";
 import Footer from "../components/Footer";
-import FormsSection from "../components/FormsSection";
 import HomeNav from "../components/HomeNav";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 import useAutoSignIn from "../Hooks/useAutoSignIn";
 
 function Home() {
@@ -9,7 +10,10 @@ function Home() {
   return (
     <div className="home">
       <HomeNav />
-      <FormsSection />
+      <main className="forms-container">
+        <SignUp />
+        <SignIn />
+      </main>
       <Footer />
     </div>
   );

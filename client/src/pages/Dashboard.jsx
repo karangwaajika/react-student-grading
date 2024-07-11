@@ -1,12 +1,10 @@
 import "../assets/dashboard.css";
-import Main from "../components/Main";
 import Nav from "../components/Nav";
 import Profile from "../components/Profile";
 import SideBar from "../components/SideBar";
 import useProtectPage from "../Hooks/useProtectPage";
 import { createContext, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import HomeDashboard from './HomeDashboard'
 
 export const UserContent = createContext();
 export default function Dashboard() {
