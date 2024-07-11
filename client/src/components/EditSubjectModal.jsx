@@ -1,56 +1,69 @@
 import Button from "./ui/Button";
 import InputField from "./ui/InputField";
 import { useState } from "react";
-export default function EditSubjectModal({closeModal}) {
-    const [form, setForm] = useState({
-        name: "",
-        category: "",
-        date: "",
-      });
-      //handle form field value
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm((prevForm) => {
-          return { ...prevForm, [name]: value };
-        });
-      };
-      const submitForm = (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        axios
-          .post(import.meta.env.VITE_REACT_APP_ADD_SUBJECT, form)
-          .then((res) => {
-            setResponseMessage({
-              success: res.data.success,
-              message: res.data.message,
-            });
-            if (Object.keys(res.data.subject).length > 0) {
-              setSubjects((prevSubjects) => [...prevSubjects, res.data.subject]);
-            }
-          })
-          .catch((e) => {
-            setResponseMessage({
-              success: false,
-              message: e.message,
-            });
-          })
-          .finally(() => {
-            setIsLoading(false);
-          });
-      };
-      //close the modal by clicking outside the modal card
-      const handleCloseModal = (e)=>{
-        if(e.target.className == "modal"){
-            closeModal()
+import axios from "axios";
+export default function EditSubjectModal({
+  closeModal,
+  subjectToEdit,
+  setResponseMessage,
+  setIsUpdated,
+}) {
+  const [form, setForm] = useState(
+    subjectToEdit < 0
+      ? {
+          name: "",
+          category: "",
+          date: "",
+          id: "",
         }
-      }
+      : {
+          name: subjectToEdit.name,
+          category: subjectToEdit.category,
+          date: subjectToEdit.date,
+          id: subjectToEdit._id,
+        }
+  );
+  //handle form field value
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => {
+      return { ...prevForm, [name]: value };
+    });
+  };
+  const submitForm = (e) => {
+    e.preventDefault();
+    axios
+      .post(import.meta.env.VITE_REACT_APP_UPDATE_SUBJECT, form)
+      .then((res) => {
+        setResponseMessage({
+          success: res.data.success,
+          message: res.data.message,
+        });
+        setIsUpdated((prevState) => !prevState);
+      })
+      .catch((e) => {
+        setResponseMessage({
+          success: false,
+          message: e.message,
+        });
+      })
+      .finally(() => {
+        closeModal();
+      });
+  };
+  //close the modal by clicking outside the modal card
+  const handleCloseModal = (e) => {
+    if (e.target.className == "modal") {
+      closeModal();
+    }
+  };
   return (
     <div className="modal" onClick={handleCloseModal}>
       <div className="modal-content">
         <div className="modal-header">
           <h2>Update Subject</h2>
           <div className="modal-close-button" onClick={closeModal}>
-            <i className="fa fa-times" ></i>
+            <i className="fa fa-times"></i>
           </div>
         </div>
         <div className="modal-body">
@@ -93,8 +106,7 @@ export default function EditSubjectModal({closeModal}) {
             </div>
           </form>
         </div>
-        <div className="modal-footer">
-        </div>
+        <div className="modal-footer"></div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-export default function SubjectTable({subjects,openModal}) {
+export default function SubjectTable({ subjects, openModal, rowToEdit }) {
   return (
     <>
       <table>
@@ -22,7 +22,12 @@ export default function SubjectTable({subjects,openModal}) {
                   <td data-cell="category">{subject.category}</td>
                   <td data-cell="date">{subject.date}</td>
                   <td data-cell="action">
-                    <i className="fa fa-pencil" onClick={openModal}></i>{" "}
+                    <i
+                      className="fa fa-pencil"
+                      onClick={() => {
+                        rowToEdit(index);
+                      }}
+                    ></i>{" "}
                     <i className="fa fa-trash" style={{ color: "red" }}></i>
                   </td>
                 </tr>
@@ -30,7 +35,9 @@ export default function SubjectTable({subjects,openModal}) {
             })
           ) : (
             <tr>
-              <td colSpan={4}>No data</td>
+              <td colSpan={4} style={{ textAlign: "center", color: "red" }}>
+                No data
+              </td>
             </tr>
           )}
         </tbody>

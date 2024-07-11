@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-export default function useFetchSubject(url, setResponseMessage ,setIsLoading, setData) {
+export default function useFetchSubject(
+  url,
+  setResponseMessage,
+  setIsLoading,
+  setData,
+  isUpdated
+) {
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
@@ -25,5 +31,5 @@ export default function useFetchSubject(url, setResponseMessage ,setIsLoading, s
     return () => {
       cancelToken.cancel();
     };
-  }, []);
+  }, [isUpdated]);
 }

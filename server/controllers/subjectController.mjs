@@ -60,3 +60,24 @@ export const viewSubjects = (request, response) => {
       });
     });
 };
+
+export const updateSubject = (request, response) => {
+  const {
+    body: { id, name, category, date },
+  } = request;
+  Subject.findByIdAndUpdate(id, { name, category, date })
+    .then((sub) => {
+      return response.send({
+        success: true,
+        message: "Subject Updated Successfully.",
+        subjects: {},
+      });
+    })
+    .catch((err) => {
+      return response.send({
+        success: false,
+        message: "Error encouted, try again.",
+        subjects: {},
+      });
+    });
+};

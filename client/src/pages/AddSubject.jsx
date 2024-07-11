@@ -12,16 +12,22 @@ export default function AddSubject() {
     useResponseMessage();
   const [isLoading, setIsLoading] = useState(false);
   const [subjects, setSubjects] = useState([]);
-
+  const [isUpdated, setIsUpdated] = useState(false);
   //fetch subject from api
   useFetchSubject(
     import.meta.env.VITE_REACT_APP_VIEW_SUBJECTS,
     setResponseMessage,
     setIsLoading,
-    setSubjects
+    setSubjects,
+    isUpdated
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [rowToEditIndex, setRowToEditIndex] = useState(null);
+  const handleRowToEdit = (index) => {
+    setRowToEditIndex(index);
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -47,10 +53,16 @@ export default function AddSubject() {
         <SubjectTable
           subjects={subjects}
           openModal={() => setIsModalOpen(true)}
+          rowToEdit={handleRowToEdit}
         />
       </div>
       {isModalOpen && (
-        <EditSubjectModal closeModal={() => setIsModalOpen(false)} />
+        <EditSubjectModal
+          closeModal={() => setIsModalOpen(false)}
+          subjectToEdit={rowToEditIndex >= 0 && subjects[rowToEditIndex]}
+          setIsUpdated={setIsUpdated}
+          setResponseMessage={setResponseMessage}
+        />
       )}
     </>
   );
