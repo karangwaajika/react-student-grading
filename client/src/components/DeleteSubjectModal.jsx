@@ -64,7 +64,7 @@ export default function DeleteSubjectModal({
         <div className="modal-header">
           <h2>{subjectInfo.name} Subject</h2>
           <div className="modal-close-button" onClick={closeModal}>
-            <i className="fa fa-times"></i>
+            <i className="fa fa-rectangle-xmark"></i>
           </div>
         </div>
         <div className="modal-body" style={bodyStyle}>

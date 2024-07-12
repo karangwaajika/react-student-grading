@@ -63,7 +63,7 @@ export default function EditSubjectModal({
         <div className="modal-header">
           <h2>Update Subject</h2>
           <div className="modal-close-button" onClick={closeModal}>
-            <i className="fa fa-times"></i>
+            <i className="fa fa-rectangle-xmark"></i>
           </div>
         </div>
         <div className="modal-body">

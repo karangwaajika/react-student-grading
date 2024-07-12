@@ -34,7 +34,7 @@ export default function SubjectTable({
                       }}
                     ></i>{" "}
                     <i
-                      className="fa fa-trash"
+                      className="fa fa-trash-can"
                       style={{ color: "red" }}
                       onClick={() => {
                         rowToDelete(index);
