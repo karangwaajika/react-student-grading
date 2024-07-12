@@ -43,3 +43,22 @@ export const addStudent = (request, response) => {
       });
     });
 };
+
+export const viewStudents = (request, response) => {
+  Student.find({})
+    .populate("favoriteSubject")
+    .exec()
+    .then((students) => {
+      response.send({
+        success: true,
+        message: "Data retrieved Successfully",
+        students,
+      });
+    })
+    .catch((err) => {
+      response.send({
+        success: false,
+        message: "Error encouted, try again.",
+      });
+    });
+};
