@@ -17,7 +17,7 @@ export default function useSubmitForm(
     .catch((e) => {
       setResponseMessage({
         success: false,
-        message: e.response.data.message,
+        message: e.message,
       });
     })
     .finally(() => {

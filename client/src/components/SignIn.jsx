@@ -42,7 +42,7 @@ export default function SignIn() {
         console.log(err.response.data);
         setResponseMessage({
           success: false,
-          message: err.response.data.message,
+          message: err.message,
         });
       })
       .finally(() => {
