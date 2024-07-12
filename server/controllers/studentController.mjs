@@ -62,3 +62,22 @@ export const viewStudents = (request, response) => {
       });
     });
 };
+
+export const updateStudent = (request, response) => {
+  const {
+    body: { id, name, favoriteSubject, academicYear, code },
+  } = request;
+  Student.findByIdAndUpdate(id, { name, favoriteSubject, academicYear, code })
+    .then((student) => {
+      response.send({
+        success: true,
+        message: "Student updated Successfully",
+      });
+    })
+    .catch((err) => {
+      response.send({
+        success: false,
+        message: "Error encouted, try again.",
+      });
+    });
+};

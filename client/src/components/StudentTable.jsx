@@ -1,7 +1,6 @@
 export default function StudentTable({
     students,
-    openModal,
-    rowToEdit,
+    getRowToEditIndex,
     rowToDelete,
   }) {
     return (
@@ -34,7 +33,7 @@ export default function StudentTable({
                       <i
                         className="fa fa-pencil"
                         onClick={() => {
-                          rowToEdit(index);
+                            getRowToEditIndex(index);
                         }}
                       ></i>{" "}
                       <i

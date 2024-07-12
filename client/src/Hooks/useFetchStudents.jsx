@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useResponseMessage from "./useResponseMessage";
 
-export default function useFetchStudents() {
+export default function useFetchStudents(isUpdated) {
   const [isLoading, setIsLoading] = useState(false);
   const [students, setStudents] = useState([]);
   const { responseMessage, setResponseMessage, removeMessage } =
@@ -27,7 +27,13 @@ export default function useFetchStudents() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [isUpdated]);
 
-  return {isLoading, responseMessage, students, removeMessage}
+  return {
+    isLoading,
+    responseMessage,
+    students,
+    removeMessage,
+    setResponseMessage,
+  };
 }
