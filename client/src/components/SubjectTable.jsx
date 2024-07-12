@@ -1,4 +1,9 @@
-export default function SubjectTable({ subjects, openModal, rowToEdit }) {
+export default function SubjectTable({
+  subjects,
+  openModal,
+  rowToEdit,
+  rowToDelete,
+}) {
   return (
     <>
       <table>
@@ -28,7 +33,13 @@ export default function SubjectTable({ subjects, openModal, rowToEdit }) {
                         rowToEdit(index);
                       }}
                     ></i>{" "}
-                    <i className="fa fa-trash" style={{ color: "red" }}></i>
+                    <i
+                      className="fa fa-trash"
+                      style={{ color: "red" }}
+                      onClick={() => {
+                        rowToDelete(index);
+                      }}
+                    ></i>
                   </td>
                 </tr>
               );

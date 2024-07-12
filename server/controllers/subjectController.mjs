@@ -81,3 +81,32 @@ export const updateSubject = (request, response) => {
       });
     });
 };
+
+export const deleteSubject = (request, response) => {
+  const {
+    body: { id },
+  } = request;
+  Subject.findByIdAndDelete(id)
+    .then((subject) => {
+      if (subject) {
+        return response.send({
+          success: true,
+          message: "Subject deleted successfully",
+          subjects: {},
+        });
+      } else {
+        return response.send({
+          success: false,
+          message: "Error encouted, try again.",
+          subjects: {},
+        });
+      }
+    })
+    .catch((err) => {
+      return response.send({
+        success: false,
+        message: "Error encouted, try again.",
+        subjects: {},
+      });
+    });
+};

@@ -6,6 +6,7 @@ import useFetchSubject from "../Hooks/useFetchSubject";
 import SubjectForm from "../components/SubjectForm";
 import SubjectTable from "../components/SubjectTable";
 import EditSubjectModal from "../components/EditSubjectModal";
+import DeleteSubjectModal from "../components/DeleteSubjectModal";
 
 export default function AddSubject() {
   const { responseMessage, setResponseMessage, removeMessage } =
@@ -21,12 +22,20 @@ export default function AddSubject() {
     setSubjects,
     isUpdated
   );
-
+  // managing update modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rowToEditIndex, setRowToEditIndex] = useState(null);
   const handleRowToEdit = (index) => {
     setRowToEditIndex(index);
     setIsModalOpen(true);
+  };
+
+  // managing delete modal
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [rowToDeleteIndex, setRowToDeleteIndex] = useState(null);
+  const handleRowToDelete = (index) => {
+    setRowToDeleteIndex(index);
+    setIsDeleteModalOpen(true);
   };
 
   return (
@@ -54,12 +63,21 @@ export default function AddSubject() {
           subjects={subjects}
           openModal={() => setIsModalOpen(true)}
           rowToEdit={handleRowToEdit}
+          rowToDelete={handleRowToDelete}
         />
       </div>
       {isModalOpen && (
         <EditSubjectModal
           closeModal={() => setIsModalOpen(false)}
           subjectToEdit={rowToEditIndex >= 0 && subjects[rowToEditIndex]}
+          setIsUpdated={setIsUpdated}
+          setResponseMessage={setResponseMessage}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteSubjectModal
+          closeModal={() => setIsDeleteModalOpen(false)}
+          subjectToDelete={rowToDeleteIndex >= 0 && subjects[rowToDeleteIndex]}
           setIsUpdated={setIsUpdated}
           setResponseMessage={setResponseMessage}
         />

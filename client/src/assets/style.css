@@ -73,19 +73,36 @@ button {
   width: 400px;
 }
 
-.modal-header{
+.modal-header {
   display: flex;
   justify-content: space-between;
   position: relative;
   margin-bottom: 20px;
 }
 .modal-close-button {
-  position:absolute;
+  position: absolute;
   top: -15px;
   left: 100%;
   text-align: center;
   cursor: pointer;
 }
-.modal-close-button:active{
+.modal-close-button:active {
   color: #7a8888ee;
+}
+.delete-options {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+.delete-options .delete {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+}
+.delete-options .delete:hover {
+  background-color: white;
+  color: red;
+}
+.fa:hover {
+  cursor: pointer;
 }
