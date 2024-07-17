@@ -81,3 +81,29 @@ export const updateStudent = (request, response) => {
       });
     });
 };
+
+export const deleteStudent = (request, response) => {
+  const {
+    body: { id },
+  } = request;
+  Student.findByIdAndDelete(id)
+    .then((student) => {
+      if (student) {
+        response.send({
+          success: true,
+          message: "Student deleted successfully.",
+        });
+      } else {
+        response.send({
+          success: false,
+          message: "Error encouted, try again.",
+        });
+      }
+    })
+    .catch((err) => {
+      response.send({
+        success: true,
+        message: "Error encouted, try again.",
+      });
+    });
+};

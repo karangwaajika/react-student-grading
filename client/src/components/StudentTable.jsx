@@ -1,7 +1,7 @@
 export default function StudentTable({
     students,
     getRowToEditIndex,
-    rowToDelete,
+    getRowToDeleteIndex,
   }) {
     return (
       <>
@@ -40,7 +40,7 @@ export default function StudentTable({
                         className="fa fa-trash-can"
                         style={{ color: "red" }}
                         onClick={() => {
-                          rowToDelete(index);
+                          getRowToDeleteIndex(index);
                         }}
                       ></i>
                     </td>

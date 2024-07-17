@@ -4,6 +4,7 @@ import FlashMessage from "../components/ui/FlashMessage";
 import { useState } from "react";
 import EditStudentModal from "../components/EditStudentModal";
 import useRetrieveSubjects from "../Hooks/useRetrieveSubjects";
+import DeleteStudentModal from "../components/DeleteStudentModal";
 
 export default function ViewStudent() {
   const [isUpdated, setIsUpdated] = useState(false);
@@ -24,6 +25,13 @@ export default function ViewStudent() {
     setRowToEditIndex(index);
     setIsModalOpen(true);
   };
+  // managing delete modal
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [rowToDeleteIndex, setRowToDeleteIndex] = useState(null);
+  const getRowToDeleteIndex = (index) => {
+    setRowToDeleteIndex(index);
+    setIsDeleteModalOpen(true);
+  };
   return (
     <>
       <h1>View student</h1>
@@ -43,6 +51,7 @@ export default function ViewStudent() {
         <StudentTable
           students={students}
           getRowToEditIndex={getRowToEditIndex}
+          getRowToDeleteIndex={getRowToDeleteIndex}
         />
       </div>
       {isModalOpen && (
@@ -51,6 +60,14 @@ export default function ViewStudent() {
           studentToEdit={rowToEditIndex >= 0 && students[rowToEditIndex]}
           setIsUpdated={setIsUpdated}
           subjects={subjects}
+          setResponseMessage={setResponseMessage}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteStudentModal
+          closeModal={() => setIsDeleteModalOpen(false)}
+          studentToDelete={rowToDeleteIndex >= 0 && students[rowToDeleteIndex]}
+          setIsUpdated={setIsUpdated}
           setResponseMessage={setResponseMessage}
         />
       )}
