@@ -1,0 +1,72 @@
+.marks-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.marks-header .form-control,
+.student-links {
+  width: 350px;
+}
+.search-input {
+  position: relative;
+}
+.student-links {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 45px;
+}
+.student-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  background-color: #e0e4e4ee;
+}
+.student-link:last-child {
+  /* box-shadow: 1px 1px 0px 0px rgb(104, 102, 102); */
+  border-bottom: 1px solid rgb(104, 102, 102);
+}
+.student-link:hover {
+  background-color: #e0e4e4ee;
+  box-shadow: 1px 0px 0px 0px rgb(104, 102, 102);
+  color: black;
+}
+.marks-nav {
+  display: flex;
+  list-style: none;
+}
+.marks-nav .nav-item,
+.marks-nav .nav-link {
+  width: 100%;
+  cursor: pointer;
+  flex-grow: 1;
+}
+.marks-nav .nav-link {
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+.marks-nav .nav-link {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.marks-nav .nav-link:hover {
+  border: 1px solid #e0e4e4ee;
+  background-color: #e0e4e4ee;
+}
+.marks-nav .nav-link.active:hover {
+  border-bottom: 2px solid rgb(18, 38, 46);
+  background-color: #e0e4e4ee;
+}
+
+.marks-nav .active {
+  border-bottom: 2px solid rgb(18, 38, 46);
+  color: rgb(18, 38, 46);
+  font-weight: 700;
+}

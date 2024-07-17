@@ -1,4 +1,6 @@
 import "../assets/marks.css";
+import MarksNav from "../components/MarksNav";
+import { Outlet } from "react-router-dom";
 import StudentList from "../components/StudentList";
 import { useState } from "react";
 import useAutoCompleteFetchStudents from "../Hooks/useAutoCompleteFetchStudents";
@@ -22,6 +24,8 @@ export default function ProvideMarks() {
           {studentName && <StudentList students={students} />}
         </div>
       </div>
+      <MarksNav />
+      <Outlet />
     </>
   );
 }

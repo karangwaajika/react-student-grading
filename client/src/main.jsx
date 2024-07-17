@@ -11,6 +11,10 @@ import AddStudent from "./pages/AddStudent.jsx";
 import ViewStudent from "./pages/ViewStudent.jsx";
 import ProvideMarks from "./pages/ProvideMarks.jsx";
 import ViewMarks from "./pages/ViewMarks.jsx";
+import SubjectMarks from "./components/SubjectMarks.jsx";
+import SocialMarks from "./components/SocialMarks.jsx";
+import BehaviorMarks from "./components/BehaviorMarks.jsx";
+import SportMarks from "./components/SportMarks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +51,24 @@ const router = createBrowserRouter([
         path:"/dashboard/provide_marks",
         element:<ProvideMarks />,
         errorElement: <NotFoundPage />,
+        children:[
+          {
+          path:"/dashboard/provide_marks/subject-marks",
+          element:<SubjectMarks />,
+          },
+          {
+          path:"/dashboard/provide_marks/social-marks",
+          element:<SocialMarks />,
+          },
+          {
+          path:"/dashboard/provide_marks/behavior-marks",
+          element:<BehaviorMarks />,
+          },
+          {
+          path:"/dashboard/provide_marks/sport-marks",
+          element:<SportMarks />,
+          },
+        ]
       },
       {
         path:"/dashboard/view_marks",
