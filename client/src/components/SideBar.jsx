@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 export default function SideBar() {
   return (
-    <nav>
-      <ul>
+    <nav className="left-nav">
+      <ul className="left-ul">
         <li>
           <div className="fontawesome">
             <i className="fa fa-home "></i>

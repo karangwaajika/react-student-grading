@@ -24,7 +24,7 @@
   flex-direction: column;
   min-height: 100vh;
 }
-.right-side nav {
+.right-side .right-nav {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -34,18 +34,18 @@
   color: black;
   min-height: 50px;
 }
-.right-side nav img {
+.right-side .right-nav img {
   width: 30px;
   display: block;
 }
 
-.right-side nav ul {
+.right-side .right-nav .right-ul {
   display: flex;
   list-style: none;
   gap: 15px;
 }
 
-.right-side ul a {
+.right-side .right-ul a {
   text-decoration: none;
   border-right: 1px solid white;
   width: 100px;
@@ -53,12 +53,12 @@
   color: black;
 }
 
-.right-side ul a:hover {
+.right-side .right-ul a:hover {
   background-color: white;
   color: black;
 }
 
-.right-side ul a:active,
+.right-side .right-ul a:active,
 a:active {
   color: rgb(235, 200, 136);
 }
@@ -81,7 +81,7 @@ a:active {
   background-color: rgb(18, 38, 46);
   color: white;
 }
-.left-side ul a {
+.left-side .left-ul a {
   color: rgba(255, 255, 255, 0.623);
 }
 article,
@@ -113,30 +113,30 @@ article p {
   font-size: 12px;
 }
 
-.left-side nav ul {
+.left-side .left-nav .left-ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
   list-style: none;
 }
 
-.left-side nav ul li {
+.left-side .left-nav .left-ul li {
   display: flex;
   gap: 10px;
   align-items: center;
   padding: 10px 5px;
 }
 
-.left-side nav li a {
+.left-side .left-nav li a {
   text-decoration: none;
 }
 
-.left-side nav ul li:hover,
-.left-side nav ul li a:hover {
+.left-side .left-nav .left-ul li:hover,
+.left-side .left-nav .left-ul li a:hover {
   background-color: white;
   color: black;
 }
-.left-side nav li .active{
+.left-side .left-nav li .active{
   font-weight: bold;
   color: rgb(255, 255, 255);
 }

@@ -21,11 +21,11 @@ export default function Nav() {
     navigate("/");
   };
   return (
-    <nav>
+    <nav className="right-nav">
       <p>
         <b>{timeOfDay}</b>! Mr {user.fullname && user.fullname}
       </p>
-      <ul className="links">
+      <ul className="right-ul">
         <li className="link">
           {" "}
           <Link key="link1" to="/dashboard">
