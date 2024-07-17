@@ -53,19 +53,19 @@ const router = createBrowserRouter([
         errorElement: <NotFoundPage />,
         children:[
           {
-          path:"/dashboard/provide_marks/subject-marks",
+          path:"/dashboard/provide_marks/:studentCode/subject-marks",
           element:<SubjectMarks />,
           },
           {
-          path:"/dashboard/provide_marks/social-marks",
+          path:"/dashboard/provide_marks/:studentCode/social-marks",
           element:<SocialMarks />,
           },
           {
-          path:"/dashboard/provide_marks/behavior-marks",
+          path:"/dashboard/provide_marks/:studentCode/behavior-marks",
           element:<BehaviorMarks />,
           },
           {
-          path:"/dashboard/provide_marks/sport-marks",
+          path:"/dashboard/provide_marks/:studentCode/sport-marks",
           element:<SportMarks />,
           },
         ]
