@@ -107,3 +107,32 @@ export const deleteStudent = (request, response) => {
       });
     });
 };
+
+export const autoFetchStudent = (request, response) => {
+  const {
+    query: { name },
+  } = request;
+  if (name) {
+    Student.find({ name: { $regex: "" + name + "", $options: "i" } })
+      .then((students) => {
+        response.send({
+          success: true,
+          message: "Successfully retrieved.",
+          students,
+        });
+      })
+      .catch((err) => {
+        response.send({
+          success: false,
+          message: "Error Fetching data.",
+          students: [],
+        });
+      });
+  } else {
+    response.send({
+      success: false,
+      message: "Empty list.",
+      students: [],
+    });
+  }
+};
