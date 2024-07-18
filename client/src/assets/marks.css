@@ -70,3 +70,6 @@
   color: rgb(18, 38, 46);
   font-weight: 700;
 }
+.marks-nav .nav-link.disabled:hover{
+  cursor: not-allowed;
+}

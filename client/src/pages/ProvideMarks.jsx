@@ -30,7 +30,7 @@ export default function ProvideMarks() {
           {studentName && <StudentList students={students} removeLinks={removeStudentList}/>}
         </div>
       </div>
-      <MarksNav studentCode={studentCode && studentCode}/>
+      <MarksNav studentCode={studentCode && studentCode} params = {params.studentCode}/>
       <Outlet />
     </>
   );
