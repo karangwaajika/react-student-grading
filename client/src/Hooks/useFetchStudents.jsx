@@ -27,9 +27,9 @@ export default function useFetchStudents(isUpdated) {
       .finally(() => {
         setIsLoading(false);
       });
-      return () => {
-        cancelToken.cancel();
-      };
+    return () => {
+      cancelToken.cancel();
+    };
   }, [isUpdated]);
 
   return {

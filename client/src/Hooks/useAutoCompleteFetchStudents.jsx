@@ -12,9 +12,15 @@ export default function useAutoCompleteFetchStudents(name) {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
     axios
-      .get(import.meta.env.VITE_REACT_APP_AUTO_FETCH_STUDENT+"?name="+name+"", {
-        cancelToken: cancelToken.token,
-      })
+      .get(
+        import.meta.env.VITE_REACT_APP_AUTO_FETCH_STUDENT +
+          "?name=" +
+          name +
+          "",
+        {
+          cancelToken: cancelToken.token,
+        }
+      )
       .then((res) => {
         setStudents(res.data.students);
       })
@@ -27,9 +33,9 @@ export default function useAutoCompleteFetchStudents(name) {
       .finally(() => {
         setIsLoading(false);
       });
-      return () => {
-        cancelToken.cancel();
-      };
+    return () => {
+      cancelToken.cancel();
+    };
   }, [name]);
 
   return {
