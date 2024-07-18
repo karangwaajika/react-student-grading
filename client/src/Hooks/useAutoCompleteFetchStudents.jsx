@@ -4,7 +4,7 @@ import useResponseMessage from "./useResponseMessage";
 
 export default function useAutoCompleteFetchStudents(name) {
   const [isLoading, setIsLoading] = useState(false);
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState();
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
 

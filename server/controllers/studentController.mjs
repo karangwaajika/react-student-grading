@@ -115,9 +115,17 @@ export const autoFetchStudent = (request, response) => {
   if (name) {
     Student.find({ name: { $regex: "" + name + "", $options: "i" } })
       .then((students) => {
-        response.send({
-          success: true,
-          message: "Successfully retrieved.",
+        // if name doesn't match the students returns empty array
+        if (students.length > 0) {
+          return response.send({
+            success: true,
+            message: "Successfully retrieved.",
+            students,
+          });
+        }
+        return response.send({
+          success: false,
+          message: "Student not found.",
           students,
         });
       })
@@ -125,14 +133,12 @@ export const autoFetchStudent = (request, response) => {
         response.send({
           success: false,
           message: "Error Fetching data.",
-          students: [],
         });
       });
   } else {
     response.send({
       success: false,
       message: "Empty list.",
-      students: [],
     });
   }
 };

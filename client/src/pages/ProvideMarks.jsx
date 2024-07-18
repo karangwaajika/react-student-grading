@@ -33,7 +33,7 @@ export default function ProvideMarks() {
             value={studentName}
           />
           {studentName && (
-            <StudentList students={students} removeLinks={removeStudentList} />
+            students && <StudentList students={students} removeLinks={removeStudentList} />
           )}
         </div>
         {student && (
