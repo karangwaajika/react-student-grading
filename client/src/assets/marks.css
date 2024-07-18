@@ -80,3 +80,14 @@
   padding: 10px;
   color: black;
 }
+
+.subject-marks-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.subject-marks-form {
+  margin: auto;
+  width: 400px;
+}
