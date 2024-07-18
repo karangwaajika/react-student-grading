@@ -27,6 +27,9 @@ export default function useAutoCompleteFetchStudents(name) {
       .finally(() => {
         setIsLoading(false);
       });
+      return () => {
+        cancelToken.cancel();
+      };
   }, [name]);
 
   return {
