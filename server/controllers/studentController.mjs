@@ -136,3 +136,30 @@ export const autoFetchStudent = (request, response) => {
     });
   }
 };
+
+export const fetchStudent = (request, response) => {
+  const { params } = request;
+  Student.findOne({ code: params.studentCode })
+    .then((student) => {
+      if (student) {
+        response.send({
+          success: true,
+          message: "Student fetched successfully",
+          student,
+        });
+      } else {
+        response.send({
+          success: false,
+          message: "Student not found",
+          student: [],
+        });
+      }
+    })
+    .catch((err) => {
+      response.send({
+        success: false,
+        message: "Error encouted, try again.",
+        student: [],
+      });
+    });
+};

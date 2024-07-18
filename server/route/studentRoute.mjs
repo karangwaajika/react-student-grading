@@ -8,5 +8,6 @@ route.get("/view_students", controller.viewStudents);
 route.post("/update_student", controller.updateStudent);
 route.post("/delete_student", controller.deleteStudent);
 route.get("/auto_fetch_student", controller.autoFetchStudent);
+route.get("/fetch_student/:studentCode", controller.fetchStudent);
 
 export default route;
