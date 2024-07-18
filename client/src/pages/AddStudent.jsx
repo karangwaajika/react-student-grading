@@ -69,12 +69,12 @@ export default function AddStudent() {
       <div className="studentSection">
         {isLoading && (
           <div className="loader">
-            <img src="../images/giphy-1.webp" width={100} height={100} />
+            <img src="/images/giphy-1.webp" width={100} height={100} />
           </div>
         )}
         {isSubmitLoading && (
           <div className="loader">
-            <img src="../images/giphy-1.webp" width={100} height={100} />
+            <img src="/images/giphy-1.webp" width={100} height={100} />
           </div>
         )}
         <form onSubmit={submitForm}>

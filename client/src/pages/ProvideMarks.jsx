@@ -6,7 +6,7 @@ import { useState } from "react";
 import useAutoCompleteFetchStudents from "../Hooks/useAutoCompleteFetchStudents";
 import useFetchStudent from "../Hooks/useFetchStudent";
 import FlashMessage from "../components/ui/FlashMessage";
-import loadingPicture from "../../public/images/giphy-1.webp";
+import loadingPicture from "/images/giphy-1.webp";
 
 export default function ProvideMarks() {
   const [studentName, setStudentName] = useState("");

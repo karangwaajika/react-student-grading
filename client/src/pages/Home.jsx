@@ -22,7 +22,7 @@ function Home() {
       )}
       {isLoading && (
           <div className="loader">
-            <img src="images/giphy-1.webp" width={100} height={100} />
+            <img src="/images/giphy-1.webp" width={100} height={100} />
           </div>
         )}
       <main className="forms-container">

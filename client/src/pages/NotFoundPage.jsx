@@ -18,7 +18,7 @@ export default function NotFoundPage() {
     <div className="home">
       <HomeNav />
       <div className="error-info" style={style}>
-        <img src="images/404-error.jpg" alt="error-page" height={100} width={100} style={imageStyle} />
+        <img src="/images/404-error.jpg" alt="error-page" height={100} width={100} style={imageStyle} />
         <p style={{margin:"auto"}}>You are lost, please go <Link to="/" style={{textDecoration:"underline", fontWeight:"bold"}}>back</Link></p>
       </div>
       <Footer />

@@ -15,7 +15,7 @@ export default function Dashboard() {
     <div className="dashboard-container">
       {isLoading && (
         <div className="loader">
-          <img src="images/giphy-1.webp" width={100} height={100} />
+          <img src="/images/giphy-1.webp" width={100} height={100} />
         </div>
       )}
       <UserContent.Provider value={userInfo}>

@@ -3,7 +3,7 @@ export default function HomeNav() {
     <nav>
       <div className="img">
         <img
-          src="images/challenge2.png"
+          src="/images/challenge2.png"
           alt="student"
           width={200}
           height={200}
