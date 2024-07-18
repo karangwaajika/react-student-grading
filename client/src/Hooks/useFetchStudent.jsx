@@ -9,9 +9,10 @@ export default function useFetchStudent(studentCode) {
     useResponseMessage();
 
   useEffect(() => {
-    setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
-    axios
+    if(studentCode){
+      setIsLoading(true);
+      axios
       .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT + "/" + studentCode, {
         cancelToken: cancelToken.token,
       })
@@ -34,6 +35,8 @@ export default function useFetchStudent(studentCode) {
       .finally(() => {
         setIsLoading(false);
       });
+    }
+    
     return () => {
       cancelToken.cancel();
     };

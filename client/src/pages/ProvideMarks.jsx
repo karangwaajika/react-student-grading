@@ -18,7 +18,7 @@ export default function ProvideMarks() {
     setStudentName("");
   };
   const { student, isLoading, responseMessage, removeMessage } =
-    useFetchStudent(studentCode && studentCode);
+    useFetchStudent(studentCode);
   return (
     <>
       <h1>Provide Marks {params.studentCode}</h1>
@@ -36,9 +36,11 @@ export default function ProvideMarks() {
             students && <StudentList students={students} removeLinks={removeStudentList} />
           )}
         </div>
-        {student && (
+        {student.length ==0 ?(<div className="student-info" style={{backgroundColor:"#f33c3c", color:"white"}}>
+            No student selected !
+          </div>) : (
           <div className="student-info">
-            {student.name} [<b>{student.code}</b>]
+            {student.name} #[<b>{student.code}</b>]
           </div>
         )}
       </div>
