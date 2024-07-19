@@ -91,3 +91,46 @@
   margin: auto;
   width: 400px;
 }
+.marks-result{
+  border-top: 1px solid rgb(148, 143, 141);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.marks-result .container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.result-grid{
+  border-radius: 3px;
+  background-color: rgb(200, 206, 207);;
+  padding: 15px;
+}
+.span{
+  border-radius: 2px;
+  padding: 0px 3px;
+  font-size: small;
+  font-weight: bold;
+  
+}
+.span-div{
+  text-align: center;
+}
+.span-success{
+  background-color: green;
+  color: white;
+}
+.span-fail{
+  background-color: rgba(240, 25, 25, 0.986);
+  color: white;
+}
+.span-date{
+  font-size: 12px;
+  font-weight: bolder;
+}

@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useResponseMessage from "./useResponseMessage";
 
-export default function useFetchStudent(studentCode) {
+export default function useFetchStudentMarks(studentCode, isMarksInserted) {
   const [isLoading, setIsLoading] = useState(false);
-  const [student, setStudent] = useState([]);
+  const [studentMarks, setStudentMarks] = useState([]);
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
 
@@ -13,7 +13,7 @@ export default function useFetchStudent(studentCode) {
     if(studentCode){
       setIsLoading(true);
       axios
-      .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT + "/" + studentCode, {
+      .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS + "/" + studentCode, {
         cancelToken: cancelToken.token,
       })
       .then((res) => {
@@ -24,7 +24,7 @@ export default function useFetchStudent(studentCode) {
             message: res.data.message,
           });
         }else{
-          setStudent(res.data.student);
+            setStudentMarks(res.data.studentMarks);
         }
       })
       .catch((err) => {
@@ -41,12 +41,12 @@ export default function useFetchStudent(studentCode) {
     return () => {
       cancelToken.cancel();
     };
-  }, [studentCode]);
+  }, [isMarksInserted]);
 
   return {
     isLoading,
     responseMessage,
-    student,
+    studentMarks,
     removeMessage,
     setResponseMessage,
   };

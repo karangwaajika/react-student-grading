@@ -6,11 +6,15 @@ import useResponseMessage from "../Hooks/useResponseMessage";
 import InputField from "./ui/InputField";
 import Button from "./ui/Button";
 import axios from "axios";
+import MarksResult from "./MarksResult";
+import useFetchStudentMarks from "../Hooks/useFetchStudentMarks";
 
 export default function SubjectMarks() {
   const params = useParams();
-  const { isLoading, responseMessage, subjects } = useRetrieveSubjects();
+  const { subjects } = useRetrieveSubjects();
   const [isSubmitLoading, setSubmitLoading] = useState(false);
+  const [isMarksInserted, setIsMarksInserted] = useState(false);
+  const {studentMarks} = useFetchStudentMarks(params.studentCode, isMarksInserted);
   const {
     responseMessage: submitMessage,
     removeMessage: removeSubmitMessage,
@@ -35,6 +39,9 @@ export default function SubjectMarks() {
     axios
       .post(import.meta.env.VITE_REACT_APP_ADD_MARKS, form)
       .then((res) => {
+        if(res.data.success){
+          setIsMarksInserted(true)
+        }
         setSubmitMessage({
           success: res.data.success,
           message: res.data.message,
@@ -116,6 +123,7 @@ export default function SubjectMarks() {
           </div>
         </form>
       </div>
+       {studentMarks.length > 0 ? <MarksResult marks = {studentMarks}/>: ''}
     </div>
   );
 }
