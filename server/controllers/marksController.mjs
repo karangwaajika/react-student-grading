@@ -3,7 +3,7 @@ import { Student } from "../models/student.mjs";
 
 export const addMarks = (request, response) => {
   const {
-    body: { subjectId, studentCode, marks },
+    body: { subjectId, studentCode, marks, trimester },
   } = request;
   Student.findOne({ code: studentCode })
     .then((student) => {
@@ -11,6 +11,7 @@ export const addMarks = (request, response) => {
         const newMarks = new Marks({
           subjectId,
           marks,
+          trimester,
           studentId: student._id,
         });
         Marks.create(newMarks)

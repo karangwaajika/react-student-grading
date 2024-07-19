@@ -21,7 +21,7 @@ export default function ProvideMarks() {
     useFetchStudent(studentCode);
   return (
     <>
-      <h1>Provide Marks {params.studentCode}</h1>
+      <h1>Provide Marks </h1>
       <div className="marks-header">
         <div className="form-control search-input">
           <input

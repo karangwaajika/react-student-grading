@@ -20,6 +20,7 @@ export default function SubjectMarks() {
     marks: "",
     subjectId: "",
     studentCode: params.studentCode,
+    trimester: "",
   });
   //handle form field value
   const handleChange = (e) => {
@@ -94,6 +95,21 @@ export default function SubjectMarks() {
               label="Marks"
               value={form.marks}
             />
+          </div>
+          <div className="form-control">
+            <select
+              name="trimester"
+              value={form.trimester}
+              onChange={handleChange}
+              id="trimester"
+              className=""
+            >
+              <option value="">Select Trimester</option>
+              <option value="1">First</option>
+              <option value="2">Second</option>
+              <option value="3">Third</option>
+              
+            </select>
           </div>
           <div className="form-control">
             <Button text="Submit" />
