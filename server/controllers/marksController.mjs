@@ -16,47 +16,49 @@ export const addMarks = (request, response) => {
           studentId: student._id,
         });
         // check if student has marks to avoid duplication before inserting
-        Marks.find({ studentId: student._id })
+        Marks.find({ studentId: student._id, subjectId, trimester })
           .then((studentMarksList) => {
             if (studentMarksList.length > 0) {
-              studentMarksList.forEach((studentMarks) => {
-                const nowDate = new Date();
-                const nowYear = nowDate.getFullYear();
+              let isMarksDuplicate = false;
+              const nowDate = new Date();
+              const nowYear = nowDate.getFullYear();
+              
+              studentMarksList.forEach(studentMarks => {
                 const markingDate = new Date(studentMarks.createdAt);
                 const markingYear = markingDate.getFullYear();
-
-                if (
-                  studentMarks.subjectId == subjectId &&
-                  markingYear == nowYear &&
-                  studentMarks.trimester == trimester
-                ) {
-                  return response.send({
-                    success: false,
-                    message: `Marks already inserted for trimester ${trimester} of this year`,
-                  });
-                } 
+                if (markingYear == nowYear) {
+                  isMarksDuplicate = true;
+                }
               });
-               // insert marks
-                  Marks.create(newMarks)
-                    .then(() => {
-                      return response.send({
-                        success: true,
-                        message: "Marks inserted successfully",
-                      });
-                    })
-                    .catch((err) => {
-                      return response.send({
-                        success: false,
-                        message: "Error encouted, try again.",
-                      });
+              
+              if (isMarksDuplicate) {
+                return response.send({
+                  success: false,
+                  message: `Marks already inserted for trimester ${trimester} of this year`,
+                });
+              } else {
+                // insert marks
+                Marks.create(newMarks)
+                  .then(() => {
+                    return response.send({
+                      success: true,
+                      message: "Marks inserted successfully 1",
                     });
+                  })
+                  .catch((err) => {
+                    return response.send({
+                      success: false,
+                      message: "Error encouted, try again.",
+                    });
+                  });
+              }
             } else {
               // insert marks as student has none
               Marks.create(newMarks)
                 .then(() => {
                   return response.send({
                     success: true,
-                    message: "Marks inserted successfully",
+                    message: "Marks inserted successfully 2",
                   });
                 })
                 .catch((err) => {
@@ -109,12 +111,13 @@ export const fetchStudentMarks = (request, response) => {
                 message: "not Marks found",
               });
             }
-          }).catch((err)=>{
+          })
+          .catch((err) => {
             return response.send({
               success: false,
               message: "Error encouted, please try again.",
             });
-          })
+          });
       } else {
         return response.send({
           success: false,
