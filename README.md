@@ -1,4 +1,4 @@
-![challenge banner](client/public/images/dashboard-app.PNG)
+![challenge banner](client/public/images/student-marks.PNG)
 
 # Student Grading App
 
