@@ -1,28 +1,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useResponseMessage from "./useResponseMessage";
+import { useParams } from "react-router-dom";
 
-export default function useFetchStudentMarks(studentCode, isMarksInserted) {
+export default function useFetchStudentMarks(isMarksInserted) {
   const [isLoading, setIsLoading] = useState(false);
   const [studentMarks, setStudentMarks] = useState([]);
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
+  const params = useParams();
 
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
-    if(studentCode){
+    if(params.studentCode){
       setIsLoading(true);
       axios
-      .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS + "/" + studentCode, {
+      .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS + "/" + params.studentCode, {
         cancelToken: cancelToken.token,
       })
       .then((res) => {
         //display response message only when there is an error
         if (!res.data.success) {
-          setResponseMessage({
-            success: res.data.success,
-            message: res.data.message,
-          });
+          setStudentMarks([])
         }else{
             setStudentMarks(res.data.studentMarks);
         }
@@ -41,7 +40,7 @@ export default function useFetchStudentMarks(studentCode, isMarksInserted) {
     return () => {
       cancelToken.cancel();
     };
-  }, [isMarksInserted]);
+  }, [params.studentCode, isMarksInserted]);
 
   return {
     isLoading,

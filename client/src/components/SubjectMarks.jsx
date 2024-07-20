@@ -14,7 +14,7 @@ export default function SubjectMarks() {
   const { subjects } = useRetrieveSubjects();
   const [isSubmitLoading, setSubmitLoading] = useState(false);
   const [isMarksInserted, setIsMarksInserted] = useState(false);
-  const {studentMarks} = useFetchStudentMarks(params.studentCode, isMarksInserted);
+  const {studentMarks} = useFetchStudentMarks(isMarksInserted);
   const {
     responseMessage: submitMessage,
     removeMessage: removeSubmitMessage,
