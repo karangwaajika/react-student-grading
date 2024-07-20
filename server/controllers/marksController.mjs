@@ -22,15 +22,15 @@ export const addMarks = (request, response) => {
               let isMarksDuplicate = false;
               const nowDate = new Date();
               const nowYear = nowDate.getFullYear();
-              
-              studentMarksList.forEach(studentMarks => {
+
+              studentMarksList.forEach((studentMarks) => {
                 const markingDate = new Date(studentMarks.createdAt);
                 const markingYear = markingDate.getFullYear();
                 if (markingYear == nowYear) {
                   isMarksDuplicate = true;
                 }
               });
-              
+
               if (isMarksDuplicate) {
                 return response.send({
                   success: false,
@@ -42,7 +42,7 @@ export const addMarks = (request, response) => {
                   .then(() => {
                     return response.send({
                       success: true,
-                      message: "Marks inserted successfully 1",
+                      message: "Marks inserted successfully",
                     });
                   })
                   .catch((err) => {
@@ -58,7 +58,7 @@ export const addMarks = (request, response) => {
                 .then(() => {
                   return response.send({
                     success: true,
-                    message: "Marks inserted successfully 2",
+                    message: "Marks inserted successfully",
                   });
                 })
                 .catch((err) => {

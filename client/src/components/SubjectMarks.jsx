@@ -14,7 +14,7 @@ export default function SubjectMarks() {
   const { subjects } = useRetrieveSubjects();
   const [isSubmitLoading, setSubmitLoading] = useState(false);
   const [isMarksInserted, setIsMarksInserted] = useState(false);
-  const {studentMarks} = useFetchStudentMarks(isMarksInserted);
+  const { studentMarks } = useFetchStudentMarks(isMarksInserted);
   const {
     responseMessage: submitMessage,
     removeMessage: removeSubmitMessage,
@@ -39,8 +39,8 @@ export default function SubjectMarks() {
     axios
       .post(import.meta.env.VITE_REACT_APP_ADD_MARKS, form)
       .then((res) => {
-        if(res.data.success){
-          setIsMarksInserted(prevState => !prevState)
+        if (res.data.success) {
+          setIsMarksInserted((prevState) => !prevState);
         }
         setSubmitMessage({
           success: res.data.success,
@@ -115,7 +115,6 @@ export default function SubjectMarks() {
               <option value="1">First</option>
               <option value="2">Second</option>
               <option value="3">Third</option>
-              
             </select>
           </div>
           <div className="form-control">
@@ -123,7 +122,7 @@ export default function SubjectMarks() {
           </div>
         </form>
       </div>
-       {studentMarks.length > 0 ? <MarksResult marks = {studentMarks}/>: ''}
+      {studentMarks.length > 0 ? <MarksResult marks={studentMarks} /> : ""}
     </div>
   );
 }

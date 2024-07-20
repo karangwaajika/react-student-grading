@@ -12,31 +12,36 @@ export default function useFetchStudentMarks(isMarksInserted) {
 
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
-    if(params.studentCode){
+    if (params.studentCode) {
       setIsLoading(true);
       axios
-      .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS + "/" + params.studentCode, {
-        cancelToken: cancelToken.token,
-      })
-      .then((res) => {
-        //display response message only when there is an error
-        if (!res.data.success) {
-          setStudentMarks([])
-        }else{
+        .get(
+          import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS +
+            "/" +
+            params.studentCode,
+          {
+            cancelToken: cancelToken.token,
+          }
+        )
+        .then((res) => {
+          //display response message only when there is an error
+          if (!res.data.success) {
+            setStudentMarks([]);
+          } else {
             setStudentMarks(res.data.studentMarks);
-        }
-      })
-      .catch((err) => {
-        setResponseMessage({
-          success: false,
-          message: err.message,
+          }
+        })
+        .catch((err) => {
+          setResponseMessage({
+            success: false,
+            message: err.message,
+          });
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
     }
-    
+
     return () => {
       cancelToken.cancel();
     };

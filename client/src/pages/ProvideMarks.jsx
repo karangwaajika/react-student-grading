@@ -32,13 +32,18 @@ export default function ProvideMarks() {
             onChange={(e) => setStudentName(e.target.value)}
             value={studentName}
           />
-          {studentName && (
-            students && <StudentList students={students} removeLinks={removeStudentList} />
+          {studentName && students && (
+            <StudentList students={students} removeLinks={removeStudentList} />
           )}
         </div>
-        {student.length ==0 ?(<div className="student-info" style={{backgroundColor:"#f33c3c", color:"white"}}>
+        {student.length == 0 ? (
+          <div
+            className="student-info"
+            style={{ backgroundColor: "#f33c3c", color: "white" }}
+          >
             No student selected !
-          </div>) : (
+          </div>
+        ) : (
           <div className="student-info">
             {student.name} #[<b>{student.code}</b>]
           </div>
