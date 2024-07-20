@@ -40,7 +40,7 @@ export default function SubjectMarks() {
       .post(import.meta.env.VITE_REACT_APP_ADD_MARKS, form)
       .then((res) => {
         if(res.data.success){
-          setIsMarksInserted(true)
+          setIsMarksInserted(prevState => !prevState)
         }
         setSubmitMessage({
           success: res.data.success,
