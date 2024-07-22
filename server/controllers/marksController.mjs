@@ -132,3 +132,23 @@ export const fetchStudentMarks = (request, response) => {
       });
     });
 };
+
+export const fetchAllMarks = (request, response) => {
+  Marks.find({})
+    .populate("subjectId")
+    .populate("studentId")
+    .exec()
+    .then((allMarks) => {
+      response.send({
+        success: true,
+        message: "Marks fetched successfully",
+        allMarks,
+      });
+    })
+    .catch((err) => {
+      response.send({
+        success: false,
+        message: "Error encounted please, try again.",
+      });
+    });
+};

@@ -4,6 +4,7 @@ import * as controller from "../controllers/marksController.mjs";
 const route = express();
 
 route.post("/add_marks", controller.addMarks);
-route.get('/fetch_student_marks/:studentCode', controller.fetchStudentMarks)
+route.get("/fetch_student_marks/:studentCode", controller.fetchStudentMarks);
+route.get("/fetch_all_marks", controller.fetchAllMarks);
 
 export default route;
