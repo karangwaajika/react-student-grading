@@ -24,4 +24,4 @@ Clone the repository by ` git clone https://github.com/karangwaajika/react-stude
 ## Contributing
 
 As mentioned above, this repo is for putting what I've been learning into practice.
-Therefore, pull requests are welcome to gain more experience from you.
+Therefore, pull requests are welcome to gain more experience from you. <a href="https://react-student-grading.vercel.app/"> A Link to the hosted project</a>
