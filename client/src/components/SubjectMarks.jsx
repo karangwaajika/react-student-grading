@@ -28,6 +28,9 @@ export default function SubjectMarks() {
   });
   //handle form field value
   const handleChange = (e) => {
+    setForm((prevForm) => {
+      return { ...prevForm, studentCode: params.studentCode };
+    });
     const { name, value } = e.target;
     setForm((prevForm) => {
       return { ...prevForm, [name]: value };
