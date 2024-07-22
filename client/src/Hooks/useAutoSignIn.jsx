@@ -21,10 +21,6 @@ export default function useAutoSignIn(url) {
         navigate("/dashboard");
       })
       .catch((err) => {
-        setResponseMessage({
-          success: false,
-          message: "You are not authenticated, please log in",
-        });
         navigate("/");
       }).finally(()=>{
         setIsLoading(false)

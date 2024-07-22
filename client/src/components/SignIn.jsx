@@ -36,10 +36,14 @@ export default function SignIn() {
         if (res.data.success) {
           localStorage.setItem("token", res.data.token); //store the token in local storage
           navigate("/dashboard");
+        }else{
+          setResponseMessage({
+            success: false,
+            message: res.data.message,
+          });
         }
       })
       .catch((err) => {
-        console.log(err.response.data);
         setResponseMessage({
           success: false,
           message: err.message,

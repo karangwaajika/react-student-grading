@@ -42,13 +42,13 @@ export const loginUser = (request, response) => {
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        return response.status(401).send({
+        return response.send({
           success: false,
           message: "User doesn't exist",
         });
       }
       if (!comparedPassword(password, user.password)) {
-        return response.status(401).send({
+        return response.send({
           success: false,
           message: "Incorrect password",
         });
@@ -69,7 +69,7 @@ export const loginUser = (request, response) => {
       });
     })
     .catch((error) => {
-      return response.status(401).send({
+      return response.send({
         success: false,
         message: "something went wrong",
         error: error,
