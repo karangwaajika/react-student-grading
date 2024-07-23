@@ -10,6 +10,10 @@ import passport from 'passport'
 
 const app = express();
 dotenv.config();
+app.use(cors({
+origin: 'https://react-student-grading.onrender.com',
+methods: ["POST", "GET"]
+})); // fetch data from front-end
 const PORT = process.env.PORT;
 
 mongoose.connect(process.env.MongoStringID).then(()=>{
@@ -21,7 +25,6 @@ app.use(express.json()) // password json
 
 app.use(express.static('public')) // access static file (image are stored)
 
-app.use(cors()) // fetch data from front-end
 
 app.use(session({ // add assession ID in database
     secret:"ajika",
