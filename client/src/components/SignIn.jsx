@@ -27,6 +27,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_LOGIN_USER_API, {
         email: form.email,

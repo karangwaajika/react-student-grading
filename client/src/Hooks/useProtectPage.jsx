@@ -9,6 +9,7 @@ export default function useAutoSignIn(url) {
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("token");
+    axios.defaults.withCredentials = true;
     axios
       .get(url, {
         headers: {

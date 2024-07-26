@@ -12,6 +12,7 @@ export default function useFetchStudent(studentCode) {
     const cancelToken = axios.CancelToken.source();
     if(studentCode){
       setIsLoading(true);
+      axios.defaults.withCredentials = true;
       axios
       .get(import.meta.env.VITE_REACT_APP_FETCH_STUDENT + "/" + studentCode, {
         cancelToken: cancelToken.token,

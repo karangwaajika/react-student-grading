@@ -35,6 +35,7 @@ export default function EditStudentModal({
   };
   const submitForm = (e) => {
     e.preventDefault();
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_UPDATE_STUDENT, form)
       .then((res) => {

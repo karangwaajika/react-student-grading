@@ -11,6 +11,7 @@ export default function useFetchSubject(
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
+    axios.defaults.withCredentials = true;
     axios
       .get(url, { cancelToken: cancelToken.token })
       .then((res) => {

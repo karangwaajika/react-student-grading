@@ -4,9 +4,16 @@ import multer from "multer";
 import passport from "passport";
 import "../login-strategy/local-strategy.mjs";
 import "../login-strategy/token-strategy.mjs";
+import cors from "cors";
 
 const route = express();
-
+route.use(
+  cors({
+    origin: "https://react-student-grading.onrender.com",
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/img");

@@ -30,6 +30,7 @@ export default function AddStudent() {
   const submitForm = (e) => {
     e.preventDefault();
     setSubmitLoading(true);
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_ADD_STUDENT, form)
       .then((res) => {

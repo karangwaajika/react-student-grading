@@ -11,6 +11,7 @@ export default function useFetchMarks() {
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
+    axios.defaults.withCredentials = true;
     axios
       .get(import.meta.env.VITE_REACT_APP_FETCH_ALL_MARKS, {
         cancelToken: cancelToken.token,

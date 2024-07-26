@@ -14,6 +14,7 @@ export default function DeleteStudentModal({
   };
 
   const deleteStudent = () => {
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_DELETE_STUDENT, {
         id: studentInfo.id,

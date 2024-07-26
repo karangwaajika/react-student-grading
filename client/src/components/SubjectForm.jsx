@@ -23,6 +23,7 @@ export default function SubjectForm({
   const submitForm = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_ADD_SUBJECT, form)
       .then((res) => {

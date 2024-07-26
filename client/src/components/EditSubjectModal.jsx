@@ -32,6 +32,7 @@ export default function EditSubjectModal({
   };
   const submitForm = (e) => {
     e.preventDefault();
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_UPDATE_SUBJECT, form)
       .then((res) => {

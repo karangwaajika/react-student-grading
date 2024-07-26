@@ -16,6 +16,7 @@ export default function DeleteSubjectModal({
   };
 
   const deleteSubject = () => {
+    axios.defaults.withCredentials = true;
     axios
       .post(import.meta.env.VITE_REACT_APP_DELETE_SUBJECT, {
         id: subjectInfo.id,
