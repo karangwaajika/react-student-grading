@@ -12,7 +12,8 @@ const app = express();
 dotenv.config();
 app.use(cors({
 origin: 'https://react-student-grading.onrender.com',
-methods: ["POST", "GET"]
+methods: ["POST", "GET"],
+credentials: true,
 })); // fetch data from front-end
 const PORT = process.env.PORT;
 
