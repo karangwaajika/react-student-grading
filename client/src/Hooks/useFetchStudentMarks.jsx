@@ -9,12 +9,12 @@ export default function useFetchStudentMarks(isMarksInserted) {
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
   const params = useParams();
-
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
     if (params.studentCode) {
       setIsLoading(true);
-      axios.defaults.withCredentials = true;
+
       axios
         .get(
           import.meta.env.VITE_REACT_APP_FETCH_STUDENT_MARKS +

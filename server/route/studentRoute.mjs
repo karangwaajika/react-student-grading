@@ -5,7 +5,7 @@ import cors from "cors";
 const route = express();
 route.use(
   cors({
-    origin: "https://react-student-grading.vercel.app",
+    origin: ["https://react-student-grading.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })

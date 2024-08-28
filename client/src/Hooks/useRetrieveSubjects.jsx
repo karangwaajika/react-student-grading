@@ -6,11 +6,11 @@ export default function useRetrieveSubjects() {
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
   const [subjects, setSubjects] = useState([]);
-
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
-    axios.defaults.withCredentials = true;
+
     axios
       .get(import.meta.env.VITE_REACT_APP_VIEW_SUBJECTS, {
         cancelToken: cancelToken.token,

@@ -7,11 +7,11 @@ export default function useAutoSignIn(url) {
   const navigate = useNavigate();
   const { setResponseMessage, responseMessage, removeMessage } =
     useResponseMessage();
-  const [isLoading, setIsLoading] = useState(false)  
+  const [isLoading, setIsLoading] = useState(false);
+  axios.defaults.withCredentials = true;
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     const token = localStorage.getItem("token");
-    axios.defaults.withCredentials = true;
     axios
       .get(url, {
         headers: {
@@ -23,9 +23,10 @@ export default function useAutoSignIn(url) {
       })
       .catch((err) => {
         navigate("/");
-      }).finally(()=>{
-        setIsLoading(false)
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
-  return {isLoading, responseMessage, removeMessage}
+  return { isLoading, responseMessage, removeMessage };
 }

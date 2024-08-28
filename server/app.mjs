@@ -11,7 +11,7 @@ import passport from 'passport'
 const app = express();
 dotenv.config();
 app.use(cors({
-origin: 'https://react-student-grading.vercel.app',
+origin: ['https://react-student-grading.vercel.app'],
 methods: ["POST", "GET"],
 credentials: true,
 })); // fetch data from front-end

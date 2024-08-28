@@ -6,10 +6,10 @@ export default function useAutoSignIn(url) {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({})
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("token");
-    axios.defaults.withCredentials = true;
     axios
       .get(url, {
         headers: {

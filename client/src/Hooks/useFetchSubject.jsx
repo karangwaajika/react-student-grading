@@ -8,10 +8,10 @@ export default function useFetchSubject(
   setData,
   isUpdated
 ) {
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
-    axios.defaults.withCredentials = true;
     axios
       .get(url, { cancelToken: cancelToken.token })
       .then((res) => {

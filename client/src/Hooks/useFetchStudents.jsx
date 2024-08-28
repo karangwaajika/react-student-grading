@@ -7,11 +7,11 @@ export default function useFetchStudents(isUpdated) {
   const [students, setStudents] = useState([]);
   const { responseMessage, setResponseMessage, removeMessage } =
     useResponseMessage();
-
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     setIsLoading(true);
     const cancelToken = axios.CancelToken.source();
-    axios.defaults.withCredentials = true;
+
     axios
       .get(import.meta.env.VITE_REACT_APP_VIEW_STUDENTS, {
         cancelToken: cancelToken.token,
